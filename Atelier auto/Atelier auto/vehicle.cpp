@@ -101,6 +101,12 @@ CheckResult car::custom_check()
 		auto c = *new CheckResult(Solution::auto_moto_oil_replacement, 6);
 		*check_result += c;
 	}
+
+	auto c = engine_.check();
+	*check_result += c;
+
+	auto c1 = carburator_.check();
+	*check_result += c1;
 	return *check_result;
 }
 
@@ -219,6 +225,38 @@ void car::perform_major_carburator_incident()
 	carburator_.start_major_malfunction();
 }
 
+void car::total_destruction()
+{
+	left_front_break_.start_major_malfunction();
+	left_front_break_.start_break_pad_malfunction();
+	left_front_break_.start_break_disk_malfunction();
+	left_back_break_.start_major_malfunction();
+	left_back_break_.start_break_disk_malfunction();
+	left_back_break_.start_break_pad_malfunction();
+	right_front_break_.start_major_malfunction();
+	right_front_break_.start_break_disk_malfunction();
+	right_front_break_.start_break_pad_malfunction();
+	right_back_break_.start_major_malfunction();
+	right_back_break_.start_break_disk_malfunction();
+	right_back_break_.start_break_pad_malfunction();
+
+	front_left_wheel_.start_major_malfunction();
+	front_left_wheel_.start_wheel_break_down();
+	front_right_wheel_.start_major_malfunction();
+	front_right_wheel_.start_wheel_break_down();
+	back_right_wheel_.start_major_malfunction();
+	back_right_wheel_.start_wheel_break_down();
+	back_left_wheel_.start_major_malfunction();
+	back_left_wheel_.start_wheel_break_down();
+
+	engine_.start_major_malfunction();
+	engine_.start_low_oil_level();
+
+	carburator_.start_major_malfunction();
+
+	burn_oil_ = true;
+}
+
 car::~car()
 = default;
 
@@ -307,22 +345,22 @@ void bicycle::perform_back_wheel_incident()
 {
 	back_wheel_.start_wheel_break_down();
 }
-//
-//void bicycle::total_destruction()
-//{
-//	/*front_break_.start_major_malfunction();
-//
-//	back_break_.start_major_malfunction();
-//
-//	front_wheel_.start_wheel_break_down();
-//	front_wheel_.start_major_malfunction();
-//
-//	back_wheel_.start_wheel_break_down();
-//	back_wheel_.start_major_malfunction();
-//
-//	chain_.start_chain_usage();
-//	chain_.start_major_malfunction();*/
-//}
+
+void bicycle::total_destruction()
+{
+	front_break_.start_major_malfunction();
+
+	back_break_.start_major_malfunction();
+
+	front_wheel_.start_wheel_break_down();
+	front_wheel_.start_major_malfunction();
+
+	back_wheel_.start_wheel_break_down();
+	back_wheel_.start_major_malfunction();
+
+	chain_.start_chain_usage();
+	chain_.start_major_malfunction();
+}
 
 bicycle::~bicycle()
 = default;
@@ -383,6 +421,10 @@ CheckResult motorcycle::custom_check()
 		auto c = *new CheckResult(Solution::auto_moto_oil_replacement, 6);
 		*check_result += c;
 	}
+	
+	auto c = engine_.check();
+	*check_result += c;
+
 	return *check_result;
 }
 
@@ -425,31 +467,31 @@ void motorcycle::perform_engine_low_oil()
 {
 	engine_.start_low_oil_level();
 }
-//
-//void motorcycle::total_destruction()
-//{/*
-//	front_break_.start_break_disk_malfunction();
-//	front_break_.start_break_pad_malfunction();
-//	front_break_.start_major_malfunction();
-//
-//	back_break_.start_break_disk_malfunction();
-//	back_break_.start_break_pad_malfunction();
-//	back_break_.start_major_malfunction();
-//
-//	front_wheel_.start_wheel_break_down();
-//	front_wheel_.start_major_malfunction();
-//
-//	back_wheel_.start_wheel_break_down();
-//	back_wheel_.start_major_malfunction();
-//
-//	chain_.start_chain_usage();
-//	chain_.start_major_malfunction();
-//
-//	engine_.start_low_oil_level();
-//	engine_.start_major_malfunction();
-//
-//	perform_engine_low_oil();*/
-//}
+
+void motorcycle::total_destruction()
+{
+	front_break_.start_break_disk_malfunction();
+	front_break_.start_break_pad_malfunction();
+	front_break_.start_major_malfunction();
+
+	back_break_.start_break_disk_malfunction();
+	back_break_.start_break_pad_malfunction();
+	back_break_.start_major_malfunction();
+
+	front_wheel_.start_wheel_break_down();
+	front_wheel_.start_major_malfunction();
+
+	back_wheel_.start_wheel_break_down();
+	back_wheel_.start_major_malfunction();
+
+	chain_.start_chain_usage();
+	chain_.start_major_malfunction();
+
+	engine_.start_low_oil_level();
+	engine_.start_major_malfunction();
+
+	perform_engine_low_oil();
+}
 
 motorcycle::~motorcycle()
 = default;

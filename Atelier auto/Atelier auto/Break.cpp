@@ -12,7 +12,7 @@ Break::Break(const Solution::MaterialType major_malfunction_fix,
 
 CheckResult Break::check()
 {
-	const auto check_result = new CheckResult(*new std::vector<Solution>, true);
+	auto check_result = new CheckResult(*new std::vector<Solution>);
 	if (major_malfunction_)
 	{
 		CheckResult c(major_malfunction_fix_, major_malfunction_screws_, !major_malfunction_);
@@ -57,7 +57,7 @@ void break_auto_moto::start_break_disk_malfunction()
 
 CheckResult break_auto_moto::check()
 {
-	auto check_result = &Break::check();
+	auto check_result = new CheckResult(Break::check());
 	if (break_disk_malfunction_)
 	{
 		CheckResult c(break_disk_malfunction_fix_, break_disk_malfunction_screws_, !break_disk_malfunction_);

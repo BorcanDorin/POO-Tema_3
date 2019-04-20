@@ -14,10 +14,8 @@ public:
 	explicit CheckResult(Solution::MaterialType material_type, int screws = 5, bool = false);
 	CheckResult(const CheckResult&);
 	CheckResult operator+=(CheckResult& check);
-	CheckResult operator= (CheckResult check) const
-	{
-		return *new CheckResult(check);
-	}
+	CheckResult operator= (CheckResult check) const;
+	
 	friend std::ostream& operator<<(std::ostream& os, CheckResult& check)
 	{
 		if (check.check_)
@@ -26,7 +24,7 @@ public:
 			return os;
 		}
 		os << "Recommended solutions:" << std::endl;
-		std::sort(check.solutions_.begin(), check.solutions_.end());
+		//std::sort(check.solutions_.begin(), check.solutions_.end());
 		for (auto it = check.solutions_.begin(); it != check.solutions_.end(); ++it)
 			os << "\t" << *it << std::endl;
 		return os;

@@ -78,7 +78,7 @@ public:
 
 	void perform_major_carburator_incident();
 
-	//void total_destruction();
+	void total_destruction();
 
 	~car();
 };
@@ -112,7 +112,7 @@ public:
 	void perform_back_wheel_major_incident();
 	void perform_back_wheel_incident();
 
-	//virtual void total_destruction();
+	virtual void total_destruction();
 
 	~bicycle();
 };
@@ -143,7 +143,7 @@ public:
 	void perform_engine_major_incident();
 	void perform_engine_low_oil();
 
-	//void total_destruction() override;
+	void total_destruction() override;
 
 	~motorcycle();
 };

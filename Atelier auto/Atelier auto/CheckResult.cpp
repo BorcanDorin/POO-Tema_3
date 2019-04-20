@@ -30,5 +30,10 @@ CheckResult CheckResult::operator+=(CheckResult& check)
 	return *this;
 }
 
+CheckResult CheckResult::operator=(CheckResult check) const
+{
+	return *new CheckResult(check);
+}
+
 CheckResult::~CheckResult()
 = default;
