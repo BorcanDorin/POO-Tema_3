@@ -8,14 +8,12 @@ engine::engine(const Solution::MaterialType major_malfunction_fix,
 	const int low_oil_level_screws,
 	const bool major_malfunction,
 	const bool low_oil_malfunction)
-	:part(major_malfunction)
+	:part(major_malfunction, major_malfunction_fix, major_malfunction_screws)
 {
 	low_oil_level_ = low_oil_malfunction;
 
-	major_malfunction_fix_ = major_malfunction_fix;
 	low_oil_level_fix_ = low_oil_level_fix;
 
-	major_malfunction_screws_ = major_malfunction_screws;
 	low_oil_level_screws_ = low_oil_level_screws;
 }
 

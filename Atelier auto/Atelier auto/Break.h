@@ -4,9 +4,6 @@
 
 class Break : public part
 {
-protected:
-	Solution::MaterialType major_malfunction_fix_;
-	int major_malfunction_screws_;
 public:
 	Break(Solution::MaterialType major_malfunction_fix = Solution::no_fix, 
 		  int major_malfunction_screws = 5, 
@@ -18,7 +15,6 @@ public:
 
 class break_auto_moto : public Break
 {
-private:
 	bool break_pad_malfunction_;
 	bool break_disk_malfunction_;
 

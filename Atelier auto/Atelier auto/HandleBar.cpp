@@ -8,14 +8,12 @@ HandleBar::HandleBar(const Solution::MaterialType major_malfunction_fix,
                      const int handle_bar_malfunction_screws,
                      const bool major_malfunction,
                      const bool handle_bar_malfunction)
-		 :part(major_malfunction)
+		 :part(major_malfunction, major_malfunction_fix, major_malfunction_screws)
 {
 	handle_bar_malfunction_ = handle_bar_malfunction;
 
-	major_malfunction_fix_ = major_malfunction_fix;
 	handle_bar_malfunction_fix_ = handle_bar_malfunction_fix;
 
-	major_malfunction_screws_ = major_malfunction_screws;
 	handle_bar_malfunction_screws_ = handle_bar_malfunction_screws;
 }
 

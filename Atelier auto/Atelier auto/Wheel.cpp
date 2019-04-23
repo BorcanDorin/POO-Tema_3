@@ -7,14 +7,12 @@ Wheel::Wheel(const Solution::MaterialType major_malfunction_fix,
 			 const int wheel_malfunction_screws,
 			 const bool major_malfunction,
 			 const bool wheel_malfunction)
-	  :part(major_malfunction)
+	  :part(major_malfunction, major_malfunction_fix, major_malfunction_screws)
 {
 	wheel_malfunction_ = wheel_malfunction;
 
-	major_malfunction_fix_ = major_malfunction_fix;
 	wheel_malfunction_fix_ = wheel_malfunction_fix;
 
-	major_malfunction_screws_ = major_malfunction_screws;
 	wheel_malfunction_screws_ = wheel_malfunction_screws;
 }
 

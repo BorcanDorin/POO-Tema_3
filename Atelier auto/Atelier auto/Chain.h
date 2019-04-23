@@ -5,10 +5,8 @@ class Chain : public part
 {
 	bool chain_malfunction_;
 
-	Solution::MaterialType major_malfunction_fix_;
 	Solution::MaterialType chain_malfunction_fix_;
 
-	int major_malfunction_screws_;
 	int chain_malfunction_screws_;
 
 public:

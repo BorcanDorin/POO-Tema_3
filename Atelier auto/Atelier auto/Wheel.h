@@ -5,10 +5,8 @@ class Wheel : public part
 {
 	bool wheel_malfunction_;
 
-	Solution::MaterialType major_malfunction_fix_;
 	Solution::MaterialType wheel_malfunction_fix_;
 
-	int major_malfunction_screws_;
 	int wheel_malfunction_screws_;
 
 public:

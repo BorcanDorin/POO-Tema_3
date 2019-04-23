@@ -3,11 +3,8 @@
 class engine : public part
 {
 	bool low_oil_level_;
-
-	Solution::MaterialType major_malfunction_fix_;
 	Solution::MaterialType low_oil_level_fix_;
 
-	int major_malfunction_screws_;
 	int low_oil_level_screws_;
 
 public:

@@ -4,11 +4,9 @@
 carburator::carburator(const Solution::MaterialType major_malfunction_fix,
 						const int major_malfunction_screws,
 						const bool major_malfunction)
-		  :part(major_malfunction)
+		  :part(major_malfunction, major_malfunction_fix, major_malfunction_screws)
 {
-	major_malfunction_fix_ = major_malfunction_fix;
 
-	major_malfunction_screws_ = major_malfunction_screws;
 }
 
 CheckResult carburator::check()

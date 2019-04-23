@@ -5,10 +5,8 @@ class HandleBar : public part
 {
 	bool handle_bar_malfunction_;
 
-	Solution::MaterialType major_malfunction_fix_;
 	Solution::MaterialType handle_bar_malfunction_fix_;
 
-	int major_malfunction_screws_;
 	int handle_bar_malfunction_screws_;
 
 public:
