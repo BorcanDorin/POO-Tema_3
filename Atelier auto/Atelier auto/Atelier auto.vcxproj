@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Atelier.h" />
+    <ClInclude Include="AutoExteriorPart.h" />
     <ClInclude Include="Break.h" />
     <ClInclude Include="carburator.h" />
     <ClInclude Include="Chain.h" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClCompile Include="Atelier auto.cpp" />
     <ClCompile Include="Atelier.cpp" />
+    <ClCompile Include="AutoExteriorPart.cpp" />
     <ClCompile Include="Break.cpp" />
     <ClCompile Include="carburator.cpp" />
     <ClCompile Include="Chain.cpp" />

@@ -5,6 +5,7 @@
 #include "Wheel.h"
 #include "engine.h"
 #include "carburator.h"
+#include "AutoExteriorPart.h"
 
 class vehicle
 {
@@ -42,6 +43,19 @@ class car : public vehicle
 	engine engine_;
 	carburator carburator_;
 
+	AutoExteriorPart front_left_wing_;
+	AutoExteriorPart front_right_wing_;
+	AutoExteriorPart back_left_wing_;
+	AutoExteriorPart back_right_wing_;
+
+	AutoExteriorPart front_bar_;
+	AutoExteriorPart back_bar_;
+
+	AutoExteriorPart hood_;
+
+	static const int part_count = 9;
+	part* custom_parts_[part_count];
+
 public:
 	explicit car(const std::string& = *new std::string, int = 2000, bool = false);
 
@@ -77,6 +91,25 @@ public:
 	void perform_engine_low_oil();
 
 	void perform_major_carburator_incident();
+
+	void perform_front_left_wing_major_incident();
+	void perform_front_right_wing_major_incident();
+	void perform_back_left_wing_major_incident();
+	void perform_back_right_wing_major_incident();
+
+	void perform_front_left_wing_incident();
+	void perform_front_right_wing_incident();
+	void perform_back_left_wing_incident();
+	void perform_back_right_wing_incident();
+
+	void perform_front_bar_major_incident();
+	void perform_front_bar_incident();
+
+	void perform_back_bar_major_incident();
+	void perform_back_bar_incident();
+
+	void perform_hood_major_incident();
+	void perform_hood_incident();
 
 	void total_destruction();
 

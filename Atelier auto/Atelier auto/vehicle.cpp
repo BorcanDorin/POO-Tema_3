@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "vehicle.h"
+#include <complex.h>
 
 
 vehicle::vehicle(const std::string& id_number, int year_of_prod)
@@ -48,6 +49,26 @@ car::car(const std::string& id, int year_of_prod, bool burn_oil):vehicle(id, yea
 
 	engine_ = *new engine(Solution::no_fix, Solution::auto_moto_oil_replacement, 5, 8);
 	carburator_ = *new carburator(Solution::no_fix, 6);
+
+	front_left_wing_ = *new AutoExteriorPart(Solution::auto_body_wing_front_left_new, Solution::auto_body_wing_front_left_fix, 7, 8);
+	front_right_wing_ = *new AutoExteriorPart(Solution::auto_body_wing_front_right_new, Solution::auto_body_wing_front_right_fix, 7, 8);
+	back_left_wing_ = *new AutoExteriorPart(Solution::auto_body_wing_back_left_new, Solution::auto_body_wing_back_left_fix, 7, 8);
+	back_right_wing_ = *new AutoExteriorPart(Solution::auto_body_wing_back_right_new, Solution::auto_body_wing_back_right_fix, 7, 8);
+
+	front_bar_ = *new AutoExteriorPart(Solution::auto_body_bar_front_new, Solution::auto_body_bar_front_fix, 7, 8);
+	back_bar_ = *new AutoExteriorPart(Solution::auto_body_bar_back_new, Solution::auto_body_bar_back_fix, 7, 8);
+
+	hood_ = *new AutoExteriorPart(Solution::auto_body_hood_new, Solution::auto_body_hood_fix, 7, 8);
+
+	custom_parts_[0] = &engine_;
+	custom_parts_[1] = &carburator_;
+	custom_parts_[2] = &front_left_wing_;
+	custom_parts_[3] = &front_right_wing_;
+	custom_parts_[4] = &back_left_wing_;
+	custom_parts_[5] = &back_right_wing_;
+	custom_parts_[6] = &front_bar_;
+	custom_parts_[7] = &back_bar_;
+	custom_parts_[8] = &hood_;
 }
 
 CheckResult car::check_breaks_category()
@@ -102,11 +123,11 @@ CheckResult car::custom_check()
 		*check_result += c;
 	}
 
-	auto c = engine_.check();
-	*check_result += c;
-
-	auto c1 = carburator_.check();
-	*check_result += c1;
+	for (auto& custom_part : custom_parts_)
+	{
+		auto c = custom_part->check();
+		*check_result += c;
+	}
 	return *check_result;
 }
 
@@ -225,6 +246,76 @@ void car::perform_major_carburator_incident()
 	carburator_.start_major_malfunction();
 }
 
+void car::perform_front_left_wing_major_incident()
+{
+	front_left_wing_.start_major_malfunction();
+}
+
+void car::perform_front_right_wing_major_incident()
+{
+	front_right_wing_.start_major_malfunction();
+}
+
+void car::perform_back_left_wing_major_incident()
+{
+	back_left_wing_.start_major_malfunction();
+}
+
+void car::perform_back_right_wing_major_incident()
+{
+	back_right_wing_.start_major_malfunction();
+}
+
+void car::perform_front_left_wing_incident()
+{
+	front_left_wing_.start_part_break_down();
+}
+
+void car::perform_front_right_wing_incident()
+{
+	front_right_wing_.start_part_break_down();
+}
+
+void car::perform_back_left_wing_incident()
+{
+	back_left_wing_.start_part_break_down();
+}
+
+void car::perform_back_right_wing_incident()
+{
+	back_right_wing_.start_part_break_down();
+}
+
+void car::perform_front_bar_major_incident()
+{
+	front_bar_.start_major_malfunction();
+}
+
+void car::perform_front_bar_incident()
+{
+	front_bar_.start_part_break_down();
+}
+
+void car::perform_back_bar_major_incident()
+{
+	back_bar_.start_major_malfunction();
+}
+
+void car::perform_back_bar_incident()
+{
+	back_bar_.start_part_break_down();
+}
+
+void car::perform_hood_major_incident()
+{
+	hood_.start_major_malfunction();
+}
+
+void car::perform_hood_incident()
+{
+	hood_.start_part_break_down();
+}
+
 void car::total_destruction()
 {
 	left_front_break_.start_major_malfunction();
@@ -255,6 +346,24 @@ void car::total_destruction()
 	carburator_.start_major_malfunction();
 
 	burn_oil_ = true;
+
+	front_bar_.start_major_malfunction();
+	front_bar_.start_part_break_down();
+	back_bar_.start_part_break_down();
+	back_bar_.start_major_malfunction();
+
+	hood_.start_major_malfunction();
+	hood_.start_part_break_down();
+
+	front_left_wing_.start_part_break_down();
+	front_left_wing_.start_major_malfunction();
+	front_right_wing_.start_part_break_down();
+	front_right_wing_.start_major_malfunction();
+
+	back_left_wing_.start_part_break_down();
+	back_left_wing_.start_major_malfunction();
+	back_right_wing_.start_part_break_down();
+	back_right_wing_.start_major_malfunction();
 }
 
 car::~car()

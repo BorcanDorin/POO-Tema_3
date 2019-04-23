@@ -166,7 +166,7 @@ public:
 	explicit Solution(MaterialType material_type, int screws = 5);
 	Solution& operator =(const Solution& sol)
 	{
-		return *new Solution(sol.material_, sol.screws_);
+		return *this;
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, Solution& sol)
